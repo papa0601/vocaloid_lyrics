@@ -1,0 +1,13 @@
+.env
+api_key.txt
+secrets.json
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
