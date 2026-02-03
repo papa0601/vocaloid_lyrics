@@ -11,10 +11,11 @@ def make_local_cache(html, filename):
 def load_local_cache(filename) -> str:
     with open(f"./{filename}.html", "r", encoding="utf-8") as f:
         return ''.join(f.readlines()) 
+
+song_name = "antenna" # 검색어 # TODO 나중에 위치 바꾸셈! 
 '''
 scraper = cloudscraper.create_scraper()
 search_url = "https://vocaloidlyrics.miraheze.org/w/api.php" # 검색할 위키의 엔드포인트
-song_name = "antenna" # 검색어
 params = {
     "action": "opensearch",
     "search": song_name,
@@ -72,3 +73,12 @@ for lyric_line in lyric_lines:
         target_text = target_text.strip()
         if target_text:
             lyrics[idx].append(target_text)
+
+target_directory = os.path.join(".", "output", song_name)
+# output 폴더 만들기
+if not os.path.exists(target_directory):
+    os.makedirs(target_directory)
+
+for lyric_type, lyric in zip(lyrics_type_list, lyrics):
+    with open(os.path.join(target_directory, lyric_type + '.txt'), "w", encoding="utf=8") as f:
+        f.write("\n".join(lyric) + "\n")
