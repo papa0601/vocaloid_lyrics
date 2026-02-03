@@ -80,5 +80,7 @@ if not os.path.exists(target_directory):
     os.makedirs(target_directory)
 
 for lyric_type, lyric in zip(lyrics_type_list, lyrics):
-    with open(os.path.join(target_directory, lyric_type + '.txt'), "w", encoding="utf=8") as f:
+    with open(os.path.join(target_directory, lyric_type + '.txt'), "w", encoding="utf-8") as f:
         f.write("\n".join(lyric) + "\n")
+
+# TODO 한 노래를 크롤링 하는 과정을 함수로 감싸서 한 번에 여러 노래를 비동기로 처리할 궁리를 해보자! 
