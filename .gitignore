@@ -13,5 +13,4 @@ __pycache__/
 Thumbs.db
 
 output/
-test.py
-test.txt
+test.*
